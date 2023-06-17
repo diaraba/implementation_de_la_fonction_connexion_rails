@@ -7,17 +7,17 @@ class SessionsController < ApplicationController
         user=User.find_by(email: params[:session][:email].downcase)
         if user&.authenticate(params[:session][:password])
             log_in(user)
-            flash[:notice]='Connecté avec succès'
-            redirect_to user_path(user.id)
+            flash[:notice]='Vous êtes connecté'
+            redirect_to tasks_path
         else
-            flash.now[:notice]='La connexion à échouer'
+            flash.now[:notice]='L\'adresse e-mail ou le mot de passe est incorrect'
             render :new
         end    
     end    
 
     def destroy
         session.delete(:user_id)
-        flash[:notice]='Déconnecté avec succès'
+        flash[:notice]='Vous êtes déconnecté'
         redirect_to new_session_path
     end 
 end

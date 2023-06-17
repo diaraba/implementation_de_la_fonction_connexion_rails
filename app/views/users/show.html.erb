@@ -1,5 +1,5 @@
-<h1><%= @user.name %> pages</h1>
+<h1>Page de détails du compte</h1>
 <p>Adresse email : <%= @user.email %></p>
 <p>L'adresse email de l'utilisateur est la suivante : <%= @user.email %><p>
-<%= link_to 'Mise à jour', edit_user_path(@user.id) %> |
+<%= link_to 'Modifier', edit_user_path(@user.id) %> |
 <%= link_to 'Supprimer', @user, method: :delete, data: { confirm: 'Are you sure?' } %>

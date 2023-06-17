@@ -10,9 +10,9 @@ class UsersController < ApplicationController
     def create
         @user=User.new(user_params)
         if @user.save
-            flash[:notice]='Compte créer avec succès'
+            flash[:notice]='Votre compte a été enregistré'
             log_in(@user)
-            redirect_to user_path(@user.id)
+            redirect_to tasks_path
         else
             render :new
         end        
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
     def update
         if @user.update(user_params)
-            flash[:notice]='Compte mise à jour avec succès'
+            flash[:notice]='Votre compte a été mis à jour'
             redirect_to user_path(@user.id)
         else
           render :edit
